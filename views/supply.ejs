@@ -1,0 +1,73 @@
+<title>Supply page</title>
+<link rel="stylesheet" href="assets/demsup.css">
+<header class="bg-primary">
+    <div class="display-1 text-center text-light">Kisaan</div>
+</header>
+<div class="container d-flex flex-column justify-content-center">
+    <form action="/xyz" method="post" class="container d-flex flex-column justify-content-center">
+
+        <div class="form-group">
+            <label for="state" class="mt-2">State:</label>
+            <select name="state" id="state" class="form-select">
+                <option>Select a state</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="district" class="mt-2">District:</label>
+            <select name="district" id="district" class="form-select">
+                <option>Select a district</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="sub-district" class="mt-2">Sub-district:</label>
+            <select name="sub-district" id="sub-district" class="form-select">
+                <option>Select a sub-district</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="aadhar" class="mt-2">Aadhar number:</label>
+            <input type="number" name="aadhar" id="aadhar" placeholder="Enter your Aadhar number" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label for="cotton" class="mt-2">Cotton:</label>
+            <input type="number" id="cotton" name="cotton" value="0" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label for="sugarcane" class="mt-2">Sugarcane:</label>
+            <input type="number" id="sugarcane" name="sugarcane" value="0" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label for="jowar" class="mt-2">Jowar:</label>
+            <input type="number" id="jowar" name="jowar" value="0" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label for="wheat" class="mt-2">Wheat:</label>
+            <input type="number" id="wheat" name="wheat" value="0" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label for="turmeric" class="mt-2">Turmeric:</label>
+            <input type="number" id="turmeric" name="turmeric" value="0" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label for="soyabean" class="mt-2">Soyabean:</label>
+            <input type="number" id="soyabean" name="soyabean" value="0" class="form-control">
+        </div>
+    </form>
+
+    <div class="container d-flex flex-column justify-content-center">
+        <button id="submit" class="btn btn-success mt-3 mb-3 btn-block">Submit</button>
+    </div>
+
+</div>
+<script src="assets/census.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.25.0/axios.min.js" integrity="sha512-/Q6t3CASm04EliI1QyIDAA/nDo9R8FQ/BULoUFyN4n/BDdyIxeH7u++Z+eobdmr11gG5D/6nPFyDlnisDwhpYA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="assets/demsup.js"></script>
