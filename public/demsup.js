@@ -50,10 +50,7 @@ const handleSubmit = async function () {
     let postRoute = '/supply';
     if (idElement == dunsElement) postRoute = '/demand';
 
-    console.log(postRoute);
-
-    const result = await axios.post(postRoute, payload);
-    console.log(result);
+    const response = await axios.post(postRoute, payload);
 }
 
 submitBtn.addEventListener('click', handleSubmit);
