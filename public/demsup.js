@@ -3,22 +3,22 @@ const aadharElement = document.querySelector('#aadhar');
 
 const idElement = dunsElement || aadharElement;
 
-const validSelection = function (state, district, subDistrict) {
+function validSelection(state, district, subDistrict) {
     return state !== 'Select a state' && district !== 'Select a district' && subDistrict !== 'Select a sub-district';
 }
 
-const validId = function (id, idLength) {
+function validId(id, idLength) {
     return id.length === idLength;
 }
 
-const validQuantities = function (quantities, maxLimit) {
+function validQuantities(quantities, maxLimit) {
     for (let i = 0; i < 6; i++) {
         if (isNaN(quantities[i]) || quantities[i] < 0 || quantities[i] > maxLimit) return false;
     }
     return true;
 }
 
-const handleSubmit = async function () {
+async function handleSubmit() {
     const state = stateList.value;
     const district = districtList.value;
     const subDistrict = subDistrictList.value;
@@ -51,6 +51,7 @@ const handleSubmit = async function () {
     if (idElement == dunsElement) postRoute = '/demand';
 
     const response = await axios.post(postRoute, payload);
+    console.log(response);
 }
 
 submitBtn.addEventListener('click', handleSubmit);
