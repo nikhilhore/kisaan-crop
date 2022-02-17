@@ -22,22 +22,39 @@ router.get('/supply', (req, res) => {
     res.render('supply');
 });
 
-router.get('/census', async (req, res) => {
-    const census = await Census.find();
-    res.json(census);
+// Census request handlers
+
+router.get('/states', async (req, res) => {
+    const states = await Census.collection.distinct('state');
+    res.send(states);
 });
+
+router.post('/districts', async (req, res) => {
+    const districts = await Census.collection.distinct('district', { state: req.body.state });
+    res.send(districts);
+});
+
+router.post('/subDistricts', async (req, res) => {
+    const subDistricts = await Census.collection.distinct('subDistrict', { state: req.body.state, district: req.body.district });
+    res.send(subDistricts);
+});
+
+// router.get('/census', async (req, res) => {
+//     const census = await Census.find();
+//     res.json(census);
+// });
 
 // POST request handlers
 router.post('/insights', async (req, res) => {
     const demandList = await Demand.find({
         state: req.body.state,
         district: req.body.district,
-        sub_district: req.body.subDistrict
+        subDistrict: req.body.subDistrict
     });
     const supplyList = await Supply.find({
         state: req.body.state,
         district: req.body.district,
-        sub_district: req.body.subDistrict
+        subDistrict: req.body.subDistrict
     });
     const demands = {
         cotton: 0,
@@ -78,7 +95,7 @@ router.post('/demand', async (req, res) => {
     const data = {
         state: req.body.state,
         district: req.body.district,
-        sub_district: req.body.subDistrict,
+        subDistrict: req.body.subDistrict,
         duns: req.body.id,
         cotton: req.body.cotton,
         sugarcane: req.body.sugarcane,
@@ -87,6 +104,7 @@ router.post('/demand', async (req, res) => {
         turmeric: req.body.turmeric,
         soyabean: req.body.soyabean
     }
+
     const demand = await new Demand(data).save();
     res.status(201).json(data);
 });
@@ -95,7 +113,7 @@ router.post('/supply', async (req, res) => {
     const data = {
         state: req.body.state,
         district: req.body.district,
-        sub_district: req.body.subDistrict,
+        subDistrict: req.body.subDistrict,
         aadhar: req.body.id,
         cotton: req.body.cotton,
         sugarcane: req.body.sugarcane,

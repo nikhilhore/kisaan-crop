@@ -9,7 +9,7 @@ const supplySchema = mongoose.Schema({
         type: String,
         required: true
     },
-    sub_district: {
+    subDistrict: {
         type: String,
         required: true
     },

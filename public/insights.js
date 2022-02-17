@@ -1,4 +1,4 @@
-const createTable = function (demands, supplies) {
+function createTable(demands, supplies) {
     const crops = ['Cotton', 'Sugarcane', 'Jowar', 'Wheat', 'Turmeric', 'Soyabean'];
     const props = ['cotton', 'sugarcane', 'jowar', 'wheat', 'turmeric', 'soyabean'];
 
@@ -24,17 +24,17 @@ const createTable = function (demands, supplies) {
     tableContainer.appendChild(table);
 }
 
-const handleSubmit = async function () {
+async function getCropData() {
     const payload = {
         state: stateList.value,
         district: districtList.value,
         subDistrict: subDistrictList.value
     }
-    const result = await axios.post('/insights', payload);
-    const demands = result.data.demands;
-    const supplies = result.data.supplies;
+    const result = (await axios.post('/insights', payload)).data;
+    const demands = result.demands;
+    const supplies = result.supplies;
 
     createTable(demands, supplies);
 }
 
-submitBtn.addEventListener('click', handleSubmit);
+submitBtn.addEventListener('click', getCropData);
